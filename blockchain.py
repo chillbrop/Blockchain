@@ -227,7 +227,18 @@ def mine():
         'previous_hash': block['previous_hash'],
     }
     return jsonify(response), 200
-
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({
+        'message': 'Blockchain API Running',
+        'endpoints': [
+            '/mine',
+            '/chain',
+            '/transactions/new',
+            '/nodes/register',
+            '/nodes/resolve'
+        ]
+    }), 200
 
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
